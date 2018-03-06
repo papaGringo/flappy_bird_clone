@@ -10,7 +10,6 @@ public class BirdMovement : MonoBehaviour
 	void Start () 
 	{
 		GetComponent<Rigidbody2D>().velocity = Vector2.right * speed;
-		
 	}
 	
 	void Update () 
@@ -23,6 +22,6 @@ public class BirdMovement : MonoBehaviour
 
 	void OnCollisionEnter2D(Collision2D other)
 	{
-		Application.LoadLevel(Application.loadedLevel);
+		//Application.LoadLevel(Application.loadedLevel);
 	}
 }
