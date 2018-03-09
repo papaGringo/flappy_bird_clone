@@ -6,6 +6,8 @@ public class ObstacleGenerator : MonoBehaviour
 {
 	public Transform[] spawnPoints;
 	public GameObject obstaclePrefab;
+
+	public bool canDestroy;
 	void Start () 
 	{
 		int randomLength = Random.Range(1,spawnPoints.Length + 1);
@@ -24,7 +26,17 @@ public class ObstacleGenerator : MonoBehaviour
 			Instantiate(obstaclePrefab, spawnPoints[randomIndex]);
 		}
 
-		StartCoroutine("AutoDestroy");
+		canDestroy = false;
+
+		//StartCoroutine("AutoDestroy");
+	}
+
+	void Update()
+	{
+		if(canDestroy)
+		{
+			Destroy(gameObject);
+		}
 	}
 
 	IEnumerator AutoDestroy()

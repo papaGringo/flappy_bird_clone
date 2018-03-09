@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   birdPosition: {fileID: 913274151}
-  offset: {x: 10, y: 0, z: 0}
+  offset: {x: 20, y: 0, z: 0}
   obstacleGeneratorPrefab: {fileID: 1356293235132468, guid: b204645412fd2f0498424c1f09f72df9,
     type: 2}
 --- !u!1 &856801409
@@ -333,9 +333,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8b625e414cbad544b60ffa30f25c686, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  force: 0.15
-  speedX: 3
+  speed: 5
+  force: 0.2
+  gSpeed: 0.95
 --- !u!1 &1299159600
 GameObject:
   m_ObjectHideFlags: 0
