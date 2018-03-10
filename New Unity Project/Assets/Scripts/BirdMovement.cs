@@ -45,6 +45,10 @@ public class BirdMovement : MonoBehaviour
 				rBody.velocity = Vector2.right * speed;
 			}
 		}
+		else
+		{
+			transform.localScale = new Vector3(transform.localScale.x, -1, transform.localScale.z);
+		}
 		rBody.AddForce(Vector2.up * -1 * gSpeed);
 	}
 	void OnCollisionEnter2D(Collision2D other)
