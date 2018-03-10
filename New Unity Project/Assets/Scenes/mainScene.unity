@@ -369,7 +369,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  force: 0.15
+  force: 0.1
   gSpeed: 0.95
 --- !u!1 &1032563517
 GameObject:
