@@ -12,8 +12,17 @@ public class BirdGameManager : MonoBehaviour
 	{
 		get { return _instance;}
 	}
-	int score;
-
+	private int score;
+	public List<Transform> obstacleQueue;
+	private Transform curObsGenerator;
+	public bool isGameOver = false;
+	public string ScoreUI
+	{
+		get
+		{
+			return score.ToString();
+		}
+	}
 	void Awake()
 	{
 		if(_instance != null && _instance == this)
@@ -30,17 +39,23 @@ public class BirdGameManager : MonoBehaviour
 		obstacleQueue = new List<Transform>();
 		InvokeRepeating("Generate", 0, Random.Range(2,4) );
 		score = 0;
+		isGameOver = false;
 	}
 	void Update()
 	{
-		if(obstacleQueue.Count > 0 && birdPosition.position.x > obstacleQueue[0].position.x + 0.10f)
+		if(obstacleQueue.Count > 0 && birdPosition.position.x > obstacleQueue[0].position.x + 0.2f)
 		{
 			curObsGenerator = obstacleQueue[0];
-			if(birdPosition.position.x > curObsGenerator.position.x)
+			score++;
+			FindClosestCurObs();
+		}
+		if(isGameOver)
+		{
+			CancelInvoke();
+			if(obstacleQueue.Count>0)
 			{
-				score++;
-				Debug.Log(score);
-				FindClosestCurObs();
+				obstacleQueue[0].GetComponent<ObstacleGenerator>().canDestroy = true;
+				obstacleQueue.RemoveAt(0);
 			}
 		}
 	}
@@ -59,6 +74,4 @@ public class BirdGameManager : MonoBehaviour
 		GameObject obsPre = Instantiate(obstacleGeneratorPrefab, new Vector3( birdPosition.position.x , Random.Range(-.75f, 1.25f) , birdPosition.position.z ) + offset, birdPosition.rotation);
 		obstacleQueue.Add(obsPre.transform);
 	}	
-	public List<Transform> obstacleQueue;
-	private Transform curObsGenerator;
 }

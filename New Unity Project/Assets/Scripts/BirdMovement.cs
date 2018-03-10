@@ -23,30 +23,34 @@ public class BirdMovement : MonoBehaviour
 	}	
 	void Update () 
 	{
-		// Debug.Log(curSpeed);
 		GetInput();
 		curSpeed = rBody.velocity.magnitude;		
 	}
 	void FixedUpdate()
 	{
-		if(Mathf.Abs(inputY)> inputDelay)
+		if(!BirdGameManager.Instance.isGameOver)
 		{
-			if(jumpCount > 0)
-			{	
-				return;
+			if(Mathf.Abs(inputY)> inputDelay)
+			{
+				if(jumpCount > 0)
+				{	
+					return;
+				}
+				rBody.AddForce(Vector2.up * force, ForceMode2D.Impulse);
+				jumpCount++;
 			}
-			rBody.AddForce(Vector2.up * force, ForceMode2D.Impulse);
-			jumpCount++;
-		}
-		rBody.AddForce(Vector2.up * -1 * gSpeed);
-		jumpCount = 0;
-		if(curSpeed < 3.5)
-		{
-			rBody.velocity = Vector2.right * speed;
-		}
+			rBody.AddForce(Vector2.up * -1 * gSpeed);
+			jumpCount = 0;
+			if(curSpeed < 3.5)
+			{
+				rBody.velocity = Vector2.right * speed;
+			}
+		}		
 	}
 	void OnCollisionEnter2D(Collision2D other)
 	{
-		//Application.LoadLevel(Application.loadedLevel);
+		//isDead = true;
+		BirdGameManager.Instance.isGameOver = true;
+		rBody.velocity = Vector2.zero;
 	}
 }

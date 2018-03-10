@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class GroundTransformSwitch : MonoBehaviour {
-
+public class GroundTransformSwitch : MonoBehaviour 
+{
 	private float speed = 1.25f;
 	private Rigidbody2D rBody;
 	// Use this for initialization
@@ -13,7 +12,14 @@ public class GroundTransformSwitch : MonoBehaviour {
 		rBody.velocity = Vector2.right * speed * -1;
 		InvokeRepeating("Switch", 0, 2);
 	}
-
+	void Update()
+	{
+		if(BirdGameManager.Instance.isGameOver)
+		{
+			CancelInvoke();
+			rBody.velocity = Vector2.zero;
+		}
+	}
 	private void Switch()
 	{
 		rBody.velocity *= -1;
