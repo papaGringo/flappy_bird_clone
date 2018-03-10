@@ -39,17 +39,16 @@ public class BirdMovement : MonoBehaviour
 				rBody.AddForce(Vector2.up * force, ForceMode2D.Impulse);
 				jumpCount++;
 			}
-			rBody.AddForce(Vector2.up * -1 * gSpeed);
 			jumpCount = 0;
 			if(curSpeed < 3.5)
 			{
 				rBody.velocity = Vector2.right * speed;
 			}
-		}		
+		}
+		rBody.AddForce(Vector2.up * -1 * gSpeed);
 	}
 	void OnCollisionEnter2D(Collision2D other)
 	{
-		//isDead = true;
 		BirdGameManager.Instance.isGameOver = true;
 		rBody.velocity = Vector2.zero;
 	}
