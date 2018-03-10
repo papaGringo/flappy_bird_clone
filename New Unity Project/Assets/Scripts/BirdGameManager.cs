@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BirdGameManager : MonoBehaviour 
 {
@@ -57,6 +58,7 @@ public class BirdGameManager : MonoBehaviour
 				obstacleQueue[0].GetComponent<ObstacleGenerator>().canDestroy = true;
 				obstacleQueue.RemoveAt(0);
 			}
+			StartCoroutine(GameObject.FindObjectOfType<Canvas>().GetComponent<CustomSceneTransition>().FadeAndLoadScene( CustomSceneTransition.FadeDirection.Out, "gameOverScene"));
 		}
 	}
 	private void FindClosestCurObs()

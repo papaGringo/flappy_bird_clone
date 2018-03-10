@@ -47,7 +47,7 @@ public class BirdMovement : MonoBehaviour
 		}
 		else
 		{
-			transform.localScale = new Vector3(transform.localScale.x, -1, transform.localScale.z);
+			// transform.localScale = new Vector3(transform.localScale.x, -1, transform.localScale.z);
 		}
 		rBody.AddForce(Vector2.up * -1 * gSpeed);
 	}
