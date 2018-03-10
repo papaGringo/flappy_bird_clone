@@ -12,7 +12,6 @@ public class BirdGameManager : MonoBehaviour
 	{
 		get { return _instance;}
 	}
-
 	int score;
 
 	void Awake()
@@ -25,46 +24,41 @@ public class BirdGameManager : MonoBehaviour
 		{
 			_instance = this;
 		}
-	}
-	
+	}	
 	void Start()
 	{
 		obstacleQueue = new List<Transform>();
-		InvokeRepeating("Generate", 0, Random.Range(3,5) );
+		InvokeRepeating("Generate", 0, Random.Range(2,4) );
 		score = 0;
 	}
-
 	void Update()
 	{
-		if(obstacleQueue.Count > 0 && birdPosition.position.x > obstacleQueue[0].position.x)
+		if(obstacleQueue.Count > 0 && birdPosition.position.x > obstacleQueue[0].position.x + 0.10f)
 		{
-			//score++ ; //curObs = null;
-			score++;
-			Debug.Log(score);
-			FindClosestCurObs();
+			curObsGenerator = obstacleQueue[0];
+			if(birdPosition.position.x > curObsGenerator.position.x)
+			{
+				score++;
+				Debug.Log(score);
+				FindClosestCurObs();
+			}
 		}
 	}
-
 	private void FindClosestCurObs()
 	{
 		if(obstacleQueue.Count>0)
 		{
-			curObsGenerator = obstacleQueue[0];
-			//Destroy(curObsGenerator);
-			obstacleQueue.RemoveAt(0);
 			curObsGenerator.GetComponent<ObstacleGenerator>().canDestroy = true;
 			curObsGenerator = null;
+			curObsGenerator = obstacleQueue[0];
+			obstacleQueue.RemoveAt(0);
 		}
 	}
-
 	private void Generate()
 	{
-		Instantiate(obstacleGeneratorPrefab, new Vector3( birdPosition.position.x , Random.Range(-.75f, 1.25f) , birdPosition.position.z ) + offset, birdPosition.rotation);
-		if(curObsGenerator == null && obstacleQueue.Count == 0) curObsGenerator = obstacleGeneratorPrefab.transform;
-		obstacleQueue.Add(curObsGenerator);
-	}
-
-	
+		GameObject obsPre = Instantiate(obstacleGeneratorPrefab, new Vector3( birdPosition.position.x , Random.Range(-.75f, 1.25f) , birdPosition.position.z ) + offset, birdPosition.rotation);
+		obstacleQueue.Add(obsPre.transform);
+	}	
 	public List<Transform> obstacleQueue;
 	private Transform curObsGenerator;
 }
