@@ -35,7 +35,6 @@ public class BirdGameManager : MonoBehaviour
 				bird = Instantiate(birdPrefab, Vector3.zero, birdPrefab.transform.rotation);
 				birdPos = bird.transform.position;
 				birdRot = bird.transform.rotation;
-				//GameObject.FindGameObjectWithTag("camBgHolder").GetComponent<CamFollow>().target = birdPrefab.transform;
 			}
 			else
 			{
@@ -118,7 +117,8 @@ public class BirdGameManager : MonoBehaviour
 		}
 		else
 		{
-			_instance = this;			
+			_instance = this;	
+			DontDestroyOnLoad(gameObject);		
 		}
 	}	
 	void Start()
