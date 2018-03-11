@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 114880244063346202}
   m_Layer: 0
   m_Name: camAndBGHolder
-  m_TagString: Untagged
+  m_TagString: camBgHolder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -301,7 +301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c451e7494b929f459797b16b5aee8ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 4972383308924252, guid: 80e1ee768131c27478c19d0d2ff9d0a5, type: 2}
 --- !u!114 &114997880388294748
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -313,6 +313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35c2e24fe4a8b8445bc881798655a8ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 0.01
 --- !u!124 &124460280574519676
 Behaviour:
   m_ObjectHideFlags: 1

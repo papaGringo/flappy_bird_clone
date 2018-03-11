@@ -5,9 +5,8 @@ using UnityEngine;
 public class CamFollow : MonoBehaviour 
 {
 	public Transform target;
-	
 	void LateUpdate () 
 	{
-		transform.position = new Vector3(target.position.x, transform.position.y, transform.position.z)	;
+		transform.position = new Vector3(target.position.x - 2.0f, transform.position.y, transform.position.z)	;
 	}
 }

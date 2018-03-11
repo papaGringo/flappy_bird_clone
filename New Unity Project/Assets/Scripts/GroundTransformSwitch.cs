@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class GroundTransformSwitch : MonoBehaviour 
 {
-	private float speed = 1.25f;
+	public float speed = 1.25f;
 	private Rigidbody2D rBody;
 	// Use this for initialization
 	void Start () 
