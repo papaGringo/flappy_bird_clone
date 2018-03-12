@@ -57,7 +57,7 @@ MonoBehaviour:
     obstaclePrefab: {fileID: 1356293235132468, guid: b204645412fd2f0498424c1f09f72df9,
       type: 2}
     obstacles: []
-    spawnOffset: {x: 5, y: 0, z: 0}
+    spawnOffset: {x: 17.5, y: 0, z: 0}
   birdHandler:
     birdPrefab: {fileID: 1397874215985322, guid: 80e1ee768131c27478c19d0d2ff9d0a5,
       type: 2}
@@ -65,7 +65,7 @@ MonoBehaviour:
     birdPos: {x: 0, y: 0, z: 0}
     birdRot: {x: 0, y: 0, z: 0, w: 0}
   camBgHandler:
-    camBGPrefab: {fileID: 1767145861323424, guid: e79031f26199c5f4d9b552c1209ec568,
+    camBGPrefab: {fileID: 1603286190616900, guid: f446d9f8b311a8d45849bc7364469fb4,
       type: 2}
     camBG: {fileID: 0}
     camFollow: {fileID: 0}
