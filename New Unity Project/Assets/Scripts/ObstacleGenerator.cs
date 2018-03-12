@@ -15,13 +15,15 @@ public class ObstacleGenerator : MonoBehaviour
 			//spawn both
 			foreach(Transform spawnPoint in spawnPoints)
 			{
-				Instantiate(obstaclePrefab, spawnPoint);
+				GameObject go =	Instantiate(obstaclePrefab, spawnPoint);
+				go.transform.SetParent(spawnPoint);
 			}
 		}
 		else
 		{
 			int randomIndex = Random.Range(0,spawnPoints.Length);
-			Instantiate(obstaclePrefab, spawnPoints[randomIndex]);
+			GameObject go = Instantiate(obstaclePrefab, spawnPoints[randomIndex]);
+			go.transform.SetParent(spawnPoints[randomIndex]);
 		}
 		canDestroy = false;
 	}
@@ -31,6 +33,15 @@ public class ObstacleGenerator : MonoBehaviour
 		{
 			StartCoroutine(AutoDestroy());
 		}
+		foreach(Transform spawnPoint in spawnPoints)
+		{
+			spawnPoint.GetChild(0).localPosition = spawnPoint.localPosition;
+		}
+	}
+
+	void FixedUpdate()
+	{
+		transform.GetComponent<Rigidbody2D>().velocity = Vector2.left * 2f;
 	}
 	IEnumerator AutoDestroy()
 	{

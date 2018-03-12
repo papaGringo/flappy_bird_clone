@@ -13,7 +13,6 @@ public class BackgroundMoveScript : MonoBehaviour
 	{
 		startPos = transform.position;		
 	}
-
 	void Update()
 	{
 		newPos = Mathf.Repeat(Time.time * -scrollSpeed, scrollOffset);
