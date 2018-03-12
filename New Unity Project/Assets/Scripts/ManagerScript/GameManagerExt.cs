@@ -7,6 +7,7 @@ public class GameManagerExt : MonoBehaviour
 	public GameObject camBGPrefab;
 	public GameObject birdPrefab;
 	public GameObject obstaclePrefab;
+	public GameObject planePrefab;
 	public List<GameObject> obstacles = new List<GameObject>();
 	private static GameManagerExt instance;	
 	public static GameManagerExt Instance
@@ -33,6 +34,7 @@ public class GameManagerExt : MonoBehaviour
 		Instantiate(camBGPrefab, Vector2.zero, camBGPrefab.transform.rotation);
 		Instantiate(birdPrefab, Vector2.zero, birdPrefab.transform.rotation);
 		InvokeRepeating("GenerateObstacle", 3, Random.Range(2, 4));
+		InvokeRepeating("GeneratePlane", 5, 10);
 	}
 	void Update()
 	{
@@ -44,8 +46,13 @@ public class GameManagerExt : MonoBehaviour
 	}
 	private void GenerateObstacle()
 	{
-		Vector2 randomSpawnPos = new Vector2(Vector2.zero.x + 20.0f, Random.Range(-0.75f, 1.25f) );
+		Vector2 randomSpawnPos = new Vector2(Vector2.zero.x + 15.0f, Random.Range(-0.75f, 1.25f) );
 		GameObject obs = Instantiate(obstaclePrefab, randomSpawnPos, obstaclePrefab.transform.rotation);
 		obstacles.Add(obs);
+	}
+	private void GeneratePlane()
+	{
+		Vector2 randomSpawnPos = new Vector2(Vector2.zero.x + 15.0f, Random.Range(1, 5) );
+		GameObject plane = Instantiate(planePrefab, randomSpawnPos, planePrefab.transform.rotation);
 	}
 }

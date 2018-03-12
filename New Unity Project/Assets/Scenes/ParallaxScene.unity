@@ -305,6 +305,8 @@ MonoBehaviour:
   birdPrefab: {fileID: 1397874215985322, guid: 80e1ee768131c27478c19d0d2ff9d0a5, type: 2}
   obstaclePrefab: {fileID: 1870389378699042, guid: 42ee4154bc8f5c3469b74fe4631f1144,
     type: 2}
+  planePrefab: {fileID: 1803526882282376, guid: f34e68a955b215c4197d40d5c02d347a,
+    type: 2}
   obstacles: []
 --- !u!4 &717563468
 Transform:
